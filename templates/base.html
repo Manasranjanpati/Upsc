@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Micro UPSC</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/infinite.min.js' %}"></script>
+</head>
+<body>
+<!--nav start-->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home">MicroUPSC</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/home">Home</a></li>
+      <li class="item"><a href="/services">Batches</a></li>
+      <li class="item"><a href="/contact">Contact</a></li>
+      <li class="item"><a href="/gallary">Gallary</a></li>
+      <li class="item"><a href="/feedback">Feedback</a></li>
+      <li class="item"><a href="/post">Blog</a></li>
+      <li class="item"><div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">User
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="/user/change_password/">Change Password</a></li>
+    <li><a href="/user/profile/">Update User</a></li>
+    <li><a href="/user/logout/">Logout</a></li>
+  </ul>
+</div></li>
+    </ul>
+  </div>
+</nav>
+<!--nav end-->
+<h1 style="text-align: center; color: rebeccapurple;">Welcome To Micro UPSC</h1>
+{% block content %}
+{% endblock %}
+<!--<footer>
+    <h5 id="foot">&copy; CopyRights By MicroUPSC</h5>
+</footer>-->
+</body>
+</html>

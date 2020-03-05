@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Micro UPSC</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<style> 
+  .container{
+    color:purple;
+     }
+</style>
+
+<body>
+  <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'index' %}">MicroUPSC</a></li>
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a class="navbar-link" href="{% url 'user:register' %}">Register</a></li> 
+          <li><a class="navbar-link" href="{% url 'user:user_login' %}">Login</a></li>    
+          </ul>
+      </div>
+<h1 style="text-align: center; color: rebeccapurple;">Welcome To Micro UPSC</h1>
+{% block content %}
+{% endblock %}
+<footer>
+    <h5 id="foot">&copy; CopyRights By MicroUPSC</h5>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+

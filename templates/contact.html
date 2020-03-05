@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+<html>
+<head>
+    <title>Contact Page</title>
+</head>
+<body>
+{% block content %}
+<style>
+    .header {
+        color: #36A0FF;
+        font-size: 27px;
+        padding: 10px;
+    }
+
+    .bigicon {
+        font-size: 35px;
+        color: #36A0FF;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend class="text-center header">Contact us</legend>
+                        <form>
+                        {% csrf_token %}
+                        {{cform.as_p}}<br>
+                        <input type="submit",value="send",class="btn btn-primary">
+                      </form>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

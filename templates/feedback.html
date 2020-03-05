@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<html>
+<head>
+    <title>Feedback Page</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+    form {
+            background-color: peru;
+            padding: 20px;
+            box-shadow: 2px 2px 10px black;)}
+</style>
+<body>
+{% block content %}
+        <div class="container">
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title1"> Yours Question </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ fform.as_p }}<br>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </form><br>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+</body>
+</html>

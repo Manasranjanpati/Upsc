@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+body{
+	background-color: lightblue;
+}
+</style>
+<div class="container">
+<form method="POST">
+{%csrf_token%}
+{{pform.as_p}}
+<input type="submit",value"Post", class="btn btn-primary">
+</form>
+</div>
+{%endblock%}

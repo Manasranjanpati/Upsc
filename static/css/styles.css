@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family:  Tahoma;
+    font-size: 20px;
+    height: 100vh;
+    background-color: dodgerblue;
+
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+ul li a:hover{
+    background-color: rebeccapurple;
+
+
+}
+footer{
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: 8.2%;
+}
+
+
+
+#foot{
+    text-align: center;
+    line-height: 0.6;
+    background-color: black;
+    color: #3875d7;
+    position: relative;
+    margin-top: 15px;
+    padding: 15px;
+}
+.container-fluid{
+        background: black;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}

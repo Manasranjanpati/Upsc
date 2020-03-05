@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+	body{
+		background-color: lightblue;
+	}
+</style>
+    <div class="row">
+    <div class="col-lg-6">
+
+    {% if post %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content|linebreaksbr }}</p>
+
+    <form method="post" action=".">
+        {% csrf_token %}
+        <label for="id_text"></label>
+        <textarea name="text" cols="40" rows="10" required="" id="id_text"></textarea>
+        <input type="hidden" name="object_id" value='{{post.id}}'>
+        <input type="submit" value="Comment" class="btn btn-primary"><br>
+     </form>
+
+
+ <div class="infinite-container">
+    <small><p class='lead'>Comments</p></small>
+        {%for comment in comments %}
+         <br>
+          <div class="infinite-item">{{comment.text}}</div>
+          by {{comment.user}}<br>
+          <a href='#' class="rep_cmt" data-parentid="{{comment.id}}">Reply</a><br>
+          {% for comment in comment.children.all %}
+            {{comment}}
+          {% endfor %}
+        {%endfor%}
+    </div>
+
+    <div class="col-lg-6">
+        <form method="POST" >
+            {%csrf_token%}
+        <textarea name="text" cols="20" rows="5" required="" id="id_text"></textarea>
+        <input type="text" id = "parent_id" name="parent_id" hidden>
+        <input type="submit" value="Comment" class="btn btn-primary"><br>
+        </form>
+    </div>
+<div>
+     {% if comments.has_next %}
+    <button><a class="infinite-more-link" href="?page={{ comments.next_page_number }}">More</a></button>
+     {% endif %}
+
+    <div class="loading" style="display: none;">
+      Loading...
+    </div>
+<script>
+    
+    $(document).ready(function(){
+    $(".rep_cmt").click(function(){
+    var parent = $(this).data('parentid')
+    $("#parent_id").val(parent)
+  });
+});
+
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+
+</script>
+{% endblock %}

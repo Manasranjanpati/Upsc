@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<style>
+body{
+	background-color: lightblue;
+}
+</style>
+<div class='row'>
+  <div class="col-lg-6">
+
+
+
+<div>
+    <h1><a href="">Blogs</a></h1>
+</div>
+
+
+<div class="topnav">
+<form>
+<input type="text" name="search_key" value="{{pie}}" placeholder="Search..">`
+<input type="submit" class="btn btn-primary btn-sm" value="Submit">
+</form>
+</div>
+
+{% for data in post %}
+    <div>
+        <p>published: {{ data.published_date }}</p>
+        <h2><a href="/post/{{data.pk}}">{{ data.title }}</a></h2>
+        <p>{{ data.content|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+
+{% if post.has_other_pages %}
+  <ul class="pagination">
+    {% if post.has_previous %}
+      <li><a href="?page={{ post.previous_page_number }}&search_key={{key}}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in post.paginator.page_range %}
+      {% if services.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}&search_key={{key}}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if post.has_next %}
+      <li><a href="?page={{ post.next_page_number }}&search_key={{key}}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+
+      </div>
+      <div class='col-lg-6'>
+       <button> <a href="/post_create">POST</a></button>
+      </div>
+ {% endif %}
+{% endblock %}

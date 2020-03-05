@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+th,td{
+  padding: 10px 20px;
+  text-align: center;
+}
+</style>
+
+<div class="topnav">
+<form>
+<input type="text" name="search_key" value="{{sub}}" placeholder="Search..">`
+<select> 
+  <option value="" >Select your option</option>
+  {% for op in subject_instructor_name %}
+    <option value="{{op}}" >{{op}}</option>
+  {% endfor %}
+</select>
+<input type="submit" class="btn btn-primary btn-sm" value="Submit">
+</form>
+</div>
+
+{% if services %}
+        <center>
+        <table id="" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th class="th-sm">Subject Code</th>
+            <th class="th-sm">Subject Name</th>
+            <th class="th-sm">Subject Duration</th>
+            <th class="th-sm">Subject Start Date</th>
+            <th class="th-sm">Subject Start Time</th>
+            <th class="th-sm">Subject Instructor Name</th>
+            <th class="th-sm">Subject Instructor Experience</th>
+        </tr>
+        </thead>
+        {% for name in services %}
+        <tbody>
+        <tr>
+            <td>{{ name.subject_code }}</td>
+            <td>{{ name.subject_name }}</td>
+            <td>{{ name.subject_duration }}</td>
+            <td>{{ name.subject_startdate }}</td>
+            <td>{{ name.subject_starttime}}</td>
+            <td>{{ name.subject_instructor_name}}</td>
+            <td>{{ name.subject_instructor_experience}}</td>
+        </tr>
+        </tbody>
+         {% endfor %}
+        </table>
+
+{% if services.has_other_pages %}
+  <ul class="pagination">
+    {% if services.has_previous %}
+      <li><a href="?page={{ services.previous_page_number }}&search_key={{key}}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in services.paginator.page_range %}
+      {% if services.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}&search_key={{key}}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if services.has_next %}
+      <li><a href="?page={{ services.next_page_number }}&search_key={{key}}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+
+  </ul>
+{% endif %}
+    </center>
+        
+        <div class="ser">
+        <h1>Services</h1>
+        <pre>
+         1. High Priority for study Materials.
+         2. We provide 24/7 services for registered aspirants.
+         3. All students will get 100% satisfaction.
+         4. We provide institutions for all over in India.
+         </pre>
+        <a href="/home/">Back</a>
+    </div>
+    <div class="ach">
+        <h1>Achievements</h1>
+        <pre>
+         1. Selected for World's best Upsc Preparation website.
+         2. Thounsands of Customers for Everyday.
+         3. India's all VVIPS are our Customers.
+         4. Obama waited for two months for our services
+        </pre>
+    </div>
+    {% else %}
+    <h1>No Batches Available For This Time</h1>
+    {% endif %}
+{% endblock %}
+
+
+
